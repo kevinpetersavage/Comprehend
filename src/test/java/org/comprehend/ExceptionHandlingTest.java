@@ -3,11 +3,12 @@ package org.comprehend;
 import static org.comprehend.Comprehension.comprehend;
 import static org.comprehend.Parameters.x;
 
+import org.comprehend.exception.ComprehendException;
 import org.junit.Test;
 
 public class ExceptionHandlingTest {
-	@Test(expected=RuntimeException.class)
-	public void throwsExceptionOnFunctionError() {
+	@Test(expected=ComprehendException.class)
+	public void throwsExceptionOnFunctionError() throws ComprehendException {
 		Parameter<Double> throwsException = new Parameter<Double>(){
 			@Override
 			public Double evaluate() {

@@ -23,7 +23,8 @@ public class Functions{
 		};
 	}
 	
-	static Parameter<Double> sum(final Parameter<Double>... params){
+	@SafeVarargs
+    static Parameter<Double> sum(final Parameter<Double>... params){
 		return new Parameter<Double>(){
 			@Override
 			public Double evaluate() {
@@ -36,7 +37,7 @@ public class Functions{
 		};
 	}
 
-	static Parameter<String> concatinate(final Parameter<String> s, final Parameter<String> t) {
+	static Parameter<String> concatenate(final Parameter<String> s, final Parameter<String> t) {
 		return new Parameter<String>(){
 			@Override
 			public String evaluate() {
@@ -45,7 +46,8 @@ public class Functions{
 		};
 	}
 	
-	static Parameter<Double> multiply(final Parameter<Double>... params) {
+	@SafeVarargs
+    static Parameter<Double> multiply(final Parameter<Double>... params) {
 		return new Parameter<Double>(){
 			@Override
 			public Double evaluate() {

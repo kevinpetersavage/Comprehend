@@ -1,85 +1,57 @@
 package org.comprehend;
 
+import com.google.common.collect.*;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.ListeningExecutorService;
+import com.google.common.util.concurrent.MoreExecutors;
+import org.comprehend.tasks.CreateTaskFunction;
+import org.comprehend.tasks.ExecuteFunctionTask;
+import org.comprehend.tasks.SubmitToServiceFunction;
+import org.comprehend.exception.ComprehendException;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Queue;
 import java.util.Set;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+
+import static com.google.common.collect.Iterables.transform;
 
 public class Comprehension {
-	static public <T> Set<T> comprehendInParallel(Parameter<T> function, @SuppressWarnings("rawtypes") ParameterSetter... params) {
+	static public <T> Set<T> comprehendInParallel(Parameter<T> function, ParameterSetter... params) throws ComprehendException {
 		int availableProcessors = Runtime.getRuntime().availableProcessors();
 		return comprehendInParallel(availableProcessors == 1 ? 1 : availableProcessors-1, function, params);
 	}
 	
-	static public <T> Set<T> comprehend(Parameter<T> function, @SuppressWarnings("rawtypes") ParameterSetter... params) {
+	static public <T> Set<T> comprehend(Parameter<T> function, ParameterSetter... params) throws ComprehendException {
 		return comprehendInParallel(1, function, params);
 	}
 
-	static public <T> Set<T> comprehendInParallel(final int numberOfThreads, final Parameter<T> function, @SuppressWarnings("rawtypes") final ParameterSetter... params) {
+	static public <T> Set<T> comprehendInParallel(final int numberOfThreads, final Parameter<T> function, final ParameterSetter... params) throws ComprehendException {
 		final List<Integer> sizes = sizes(params);
 		final long combinations = combinations(sizes);
 
-		final Set<T> results = Collections.synchronizedSet(new HashSet<T>());
-		
-		List<Thread> threads = new ArrayList<Thread>();
-		final Queue<Long> queue = new ConcurrentLinkedQueue<Long>();
-		for (int i = 0; i < numberOfThreads; i++) {
-			sendMessageIfValid(queue, i, combinations);
-			threads.add(new Thread(){
-				@Override
-				public void run() {
-					Long i = null;
-					while ((i = queue.poll()) != null){
-						sendMessageIfValid(queue, i + numberOfThreads, combinations);
-						
-						long combinationsSoFar = 1;
-						for (int j = 0; j < params.length; j++) {
-							long size = sizes.get(j);
-							params[j].setParameter((i/combinationsSoFar)%size);
-							combinationsSoFar *= size;
-						}
-						results.add(function.evaluate());
-					}
-				}
-			});
-		}
-		runAndJoin(threads);
-		return results;
+        final ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(numberOfThreads));
+
+        ContiguousSet<Long> indexes = createLazySet(0L, combinations);
+        Iterable<ExecuteFunctionTask<T>> tasks = transform(indexes, new CreateTaskFunction<T>(params, sizes, function));
+        Iterable<ListenableFuture<T>> futures = transform(tasks, new SubmitToServiceFunction<T>(service));
+        ListenableFuture<List<T>> resultFuture = Futures.allAsList(futures);
+
+        try {
+            return Sets.newHashSet(resultFuture.get());
+        } catch (InterruptedException | ExecutionException e) {
+            throw new ComprehendException(e);
+        }
 	}
 
-	private static void runAndJoin(List<Thread> threads) {
-		final List<Throwable> errors = Collections.synchronizedList(new ArrayList<Throwable>());
-		for (Thread thread: threads) {
-			thread.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-				public void uncaughtException(Thread t, Throwable e) {
-					errors.add(e);
-				}
-			});
-			thread.start();
-		}
-		for (Thread thread: threads) {
-			try {
-				thread.join();
-			} catch (InterruptedException e) {
-				throw new RuntimeException(e);
-			}
-		}
-		for (Throwable throwable : errors) {
-			throw new RuntimeException(throwable);
-		}
-	}
-	
-	private static void sendMessageIfValid(Queue<Long> queue, long i, long combinations) {
-		if (i < combinations){
-			queue.add(i);
-		}
-	}
+    private static ContiguousSet<Long> createLazySet(long from, long to) {
+        return ContiguousSet.create(Range.closedOpen(from, to), DiscreteDomain.longs());
+    }
 
-	private static long combinations(List<Integer> sizes) {
+    private static long combinations(List<Integer> sizes) {
 		BigInteger combinations = BigInteger.ONE;
 		for (Integer size : sizes) {
 			combinations = combinations.multiply(new BigInteger(size.toString()));
@@ -90,9 +62,8 @@ public class Comprehension {
 		return combinations.longValue();
 	}
 
-	@SuppressWarnings("rawtypes")
 	private static List<Integer> sizes(ParameterSetter... params) {
-		List<Integer> sizes = new ArrayList<Integer>();
+		List<Integer> sizes = new ArrayList<>();
 		for (ParameterSetter param: params) {
 			int size = param.size();
 			sizes.add(size);
