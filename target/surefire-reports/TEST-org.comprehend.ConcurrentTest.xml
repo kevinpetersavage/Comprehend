@@ -1,70 +1,104 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.11" errors="0" skipped="0" tests="2" name="org.comprehend.ConcurrentTest">
+<testsuite failures="1" time="0.513" errors="0" skipped="0" tests="2" name="org.comprehend.ConcurrentTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="sun.boot.library.path" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Libraries"/>
-    <property name="java.vm.version" value="20.12-b01-434"/>
-    <property name="awt.nativeDoubleBuffering" value="true"/>
-    <property name="gopherProxySet" value="false"/>
-    <property name="mrj.build" value="11M3909"/>
-    <property name="java.vm.vendor" value="Apple Inc."/>
-    <property name="java.vendor.url" value="http://www.apple.com/"/>
-    <property name="path.separator" value=":"/>
+    <property name="sun.boot.library.path" value="C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\jre\bin"/>
+    <property name="java.vm.version" value="23.25-b01"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="user.country" value="US"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="GB"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/ksavage/Documents/workspace/Comprehend"/>
-    <property name="java.runtime.version" value="1.6.0_37-b06-434-11M3909"/>
-    <property name="java.awt.graphicsenv" value="apple.awt.CGraphicsEnvironment"/>
-    <property name="basedir" value="/Users/ksavage/Documents/workspace/Comprehend"/>
-    <property name="java.endorsed.dirs" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/endorsed"/>
-    <property name="os.arch" value="x86_64"/>
-    <property name="surefire.real.class.path" value="/Users/ksavage/Documents/workspace/Comprehend/target/surefire/surefirebooter980863318351119757.jar"/>
-    <property name="java.io.tmpdir" value="/var/folders/ls/4m7s78ls5m79v87r95r19hh00000gp/T/"/>
+    <property name="user.dir" value="C:\Users\Jo\Documents\kevin\Comprehend"/>
+    <property name="java.runtime.version" value="1.7.0_25-b17"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\Jo\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
-    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
-    <property name="os.name" value="Mac OS X"/>
-    <property name="sun.jnu.encoding" value="MacRoman"/>
-    <property name="java.library.path" value=".:/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
-    <property name="surefire.test.class.path" value="/Users/ksavage/Documents/workspace/Comprehend/target/test-classes:/Users/ksavage/Documents/workspace/Comprehend/target/classes:/Users/ksavage/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/ksavage/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="classworlds.conf" value="C:\Users\Jo\Documents\kevin\apache-maven-3.0.5\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files (x86)\AMD APP\bin\x86;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\nodejs\;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\ruby-1.9.2\bin;C:\Program Files (x86)\git\bin;C:\Program Files (x86)\git\cmd;C:\HashiCorp\Vagrant\bin;C:\Program Files\SlikSvn\bin;C:\Users\Jo\AppData\Roaming\npm\;C:\Users\Jo\Documents\kevin\apache-maven-3.0.5\bin;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="java.class.version" value="50.0"/>
+    <property name="java.class.version" value="51.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="10.8.2"/>
-    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="user.home" value="/Users/ksavage"/>
-    <property name="user.timezone" value=""/>
-    <property name="java.awt.printerjob" value="apple.awt.CPrinterJob"/>
-    <property name="java.specification.version" value="1.6"/>
-    <property name="file.encoding" value="MacRoman"/>
-    <property name="user.name" value="kevin"/>
-    <property name="java.class.path" value="/Users/ksavage/Documents/workspace/Comprehend/target/test-classes:/Users/ksavage/Documents/workspace/Comprehend/target/classes:/Users/ksavage/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/ksavage/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
-    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\Jo"/>
+    <property name="user.timezone" value="Europe/London"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="Jo"/>
+    <property name="java.class.path" value="C:\Users\Jo\Documents\kevin\apache-maven-3.0.5\bin\..\boot\plexus-classworlds-2.4.jar"/>
+    <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="java.home" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home"/>
-    <property name="sun.java.command" value="/Users/ksavage/Documents/workspace/Comprehend/target/surefire/surefirebooter980863318351119757.jar /Users/ksavage/Documents/workspace/Comprehend/target/surefire/surefire8370354188348155199tmp /Users/ksavage/Documents/workspace/Comprehend/target/surefire/surefire2311097169194245055tmp"/>
-    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.home" value="C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
-    <property name="awt.toolkit" value="apple.awt.CToolkit"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.version" value="1.6.0_37"/>
-    <property name="java.ext.dirs" value="/Library/Java/Extensions:/System/Library/Java/Extensions:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext"/>
-    <property name="sun.boot.class.path" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar:/System/Library/Frameworks/JavaVM.framework/Frameworks/JavaRuntimeSupport.framework/Resources/Java/JavaRuntimeSupport.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/ui.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/laf.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/sunrsasign.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsse.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jce.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/charsets.jar"/>
-    <property name="java.vendor" value="Apple Inc."/>
-    <property name="localRepository" value="/Users/ksavage/.m2/repository"/>
-    <property name="file.separator" value="/"/>
-    <property name="java.vendor.url.bug" value="http://bugreport.apple.com/"/>
+    <property name="java.version" value="1.7.0_25"/>
+    <property name="java.ext.dirs" value="C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\jre\lib\resources.jar;C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\jre\lib\rt.jar;C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\jre\lib\sunrsasign.jar;C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\jre\lib\jsse.jar;C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\jre\lib\jce.jar;C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\jre\lib\charsets.jar;C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\jre\lib\jfr.jar;C:\Users\Jo\Documents\kevin\Java\jdk1.7.0_25\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\Users\Jo\Documents\kevin\apache-maven-3.0.5\bin\.."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="mrj.version" value="1070.1.6.0_37-434"/>
-    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0.033" classname="org.comprehend.ConcurrentTest" name="canCallFromDifferentThreads"/>
-  <testcase time="0.04" classname="org.comprehend.ConcurrentTest" name="parallelMultiThreadedExample"/>
+  <testcase time="0.27" classname="org.comprehend.ConcurrentTest" name="canCallFromDifferentThreads"/>
+  <testcase time="0.141" classname="org.comprehend.ConcurrentTest" name="parallelMultiThreadedExample">
+    <failure message="actual value:&lt;1.42&gt; should be greater than:&lt;2.0&gt;" type="java.lang.AssertionError">java.lang.AssertionError: actual value:&lt;1.42&gt; should be greater than:&lt;2.0&gt;
+	at org.fest.assertions.Fail.failure(Fail.java:228)
+	at org.fest.assertions.Assert.failure(Assert.java:149)
+	at org.fest.assertions.DoubleAssert.isGreaterThan(DoubleAssert.java:135)
+	at org.comprehend.ConcurrentTest.parallelMultiThreadedExample(ConcurrentTest.java:40)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+</failure>
+    <system-out>done
+done
+</system-out>
+  </testcase>
 </testsuite>
