@@ -3,21 +3,22 @@ package org.comprehend;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class Parameter<T>{
-	private Map<Thread, T> valueMap = new ConcurrentHashMap<>();
+public class Parameter<T> {
+    private Map<Thread, T> valueMap = new ConcurrentHashMap<>();
 
-	public Parameter() {}
+    public Parameter() {
+    }
 
-	@SafeVarargs
+    @SafeVarargs
     public final ParameterSetter<T> in(T... items) {
-		return new ParameterSetter<>(this, items);
-	}
+        return new ParameterSetter<>(this, items);
+    }
 
-	void setValue(T value){
-		this.valueMap.put(Thread.currentThread(), value);
-	}
+    void setValue(T value) {
+        this.valueMap.put(Thread.currentThread(), value);
+    }
 
-	public T evaluate(){
-		return valueMap.get(Thread.currentThread());
-	}
+    public T evaluate() {
+        return valueMap.get(Thread.currentThread());
+    }
 }

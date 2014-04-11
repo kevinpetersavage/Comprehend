@@ -20,18 +20,18 @@ import java.util.concurrent.Executors;
 import static com.google.common.collect.Iterables.transform;
 
 public class Comprehension {
-	static public <T> Set<T> comprehendInParallel(Parameter<T> function, ParameterSetter... params) throws ComprehendException {
-		int availableProcessors = Runtime.getRuntime().availableProcessors();
-		return comprehendInParallel(availableProcessors == 1 ? 1 : availableProcessors-1, function, params);
-	}
-	
-	static public <T> Set<T> comprehend(Parameter<T> function, ParameterSetter... params) throws ComprehendException {
-		return comprehendInParallel(1, function, params);
-	}
+    static public <T> Set<T> comprehendInParallel(Parameter<T> function, ParameterSetter... params) throws ComprehendException {
+        int availableProcessors = Runtime.getRuntime().availableProcessors();
+        return comprehendInParallel(availableProcessors == 1 ? 1 : availableProcessors - 1, function, params);
+    }
 
-	static public <T> Set<T> comprehendInParallel(final int numberOfThreads, final Parameter<T> function, final ParameterSetter... params) throws ComprehendException {
-		final List<Integer> sizes = sizes(params);
-		final long combinations = combinations(sizes);
+    static public <T> Set<T> comprehend(Parameter<T> function, ParameterSetter... params) throws ComprehendException {
+        return comprehendInParallel(1, function, params);
+    }
+
+    static public <T> Set<T> comprehendInParallel(final int numberOfThreads, final Parameter<T> function, final ParameterSetter... params) throws ComprehendException {
+        final List<Integer> sizes = sizes(params);
+        final long combinations = combinations(sizes);
 
         final ListeningExecutorService service = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(numberOfThreads));
 
@@ -45,29 +45,29 @@ public class Comprehension {
         } catch (InterruptedException | ExecutionException e) {
             throw new ComprehendException(e);
         }
-	}
+    }
 
     private static ContiguousSet<Long> createLazySet(long from, long to) {
         return ContiguousSet.create(Range.closedOpen(from, to), DiscreteDomain.longs());
     }
 
     private static long combinations(List<Integer> sizes) {
-		BigInteger combinations = BigInteger.ONE;
-		for (Integer size : sizes) {
-			combinations = combinations.multiply(new BigInteger(size.toString()));
-		}
-		if (combinations.compareTo(new BigInteger(String.valueOf(Long.MAX_VALUE))) >=0) {
-			throw new UnsupportedOperationException("to many combinations: " + combinations);
-		}
-		return combinations.longValue();
-	}
+        BigInteger combinations = BigInteger.ONE;
+        for (Integer size : sizes) {
+            combinations = combinations.multiply(new BigInteger(size.toString()));
+        }
+        if (combinations.compareTo(new BigInteger(String.valueOf(Long.MAX_VALUE))) >= 0) {
+            throw new UnsupportedOperationException("to many combinations: " + combinations);
+        }
+        return combinations.longValue();
+    }
 
-	private static List<Integer> sizes(ParameterSetter... params) {
-		List<Integer> sizes = new ArrayList<>();
-		for (ParameterSetter param: params) {
-			int size = param.size();
-			sizes.add(size);
-		}
-		return sizes; 
-	}
+    private static List<Integer> sizes(ParameterSetter... params) {
+        List<Integer> sizes = new ArrayList<>();
+        for (ParameterSetter param : params) {
+            int size = param.size();
+            sizes.add(size);
+        }
+        return sizes;
+    }
 }
