@@ -1,5 +1,37 @@
 package org.comprehend.capture;
 
-public interface ParameterCapturer<P, R> {
-    R captureAndNextAction(P[] param) ;
+import com.google.common.collect.Lists;
+
+import java.util.List;
+
+public class ParameterCapturer<P, R> implements SecondParameterCapturer<P,R>, ThirdParameterCapturer<P,R>{
+    private final NextAction<R> nextAction;
+    private final List<List> paramsSoFar;
+
+    public ParameterCapturer(NextAction<R> nextAction, List<List> paramsSoFar) {
+        this.nextAction = nextAction;
+        this.paramsSoFar = paramsSoFar;
+    }
+
+    @Override
+    public R secondParameter(P... param) {
+        return captureAndNextAction(param);
+    }
+
+    @Override
+    public R thirdParameter(P... param) {
+        return captureAndNextAction(param);
+    }
+
+    @Override
+    public R captureAndNextAction(P[] param) {
+        return nextAction.perform(capture(param));
+    }
+
+    private List<List> capture(P[] param) {
+        List<List> parameters = Lists.newArrayList();
+        parameters.addAll(paramsSoFar);
+        parameters.add(Lists.newArrayList(param));
+        return parameters;
+    }
 }
