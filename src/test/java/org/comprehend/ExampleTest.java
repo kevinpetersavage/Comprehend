@@ -29,7 +29,7 @@ public class ExampleTest {
 
 
     @Test
-    public void stringConcat() throws Exception {
+    public void stringConcatExample() throws Exception {
         assertThat(
                 comprehend((String s, String t) -> s + t).firstParameter("A", "B").secondParameter("c", "d")
         ).isEqualTo(
@@ -50,16 +50,27 @@ public class ExampleTest {
     }
 
     @Test
+    public void fourParametersExample() throws Exception {
+        assertThat(
+                comprehend((Integer a, Integer b, Integer c, Integer d) -> a + b + c + d)
+                        .firstParameter(1, 2)
+                        .secondParameter(1, 2, 3)
+                        .thirdParameter(1, 2, 3, 4)
+                        .fourthParameter(1)
+        ).isEqualTo(
+                set(4, 5, 6, 7, 8, 9, 10)
+        );
+    }
+
+    @Test
     public void concurrentExample() throws Exception {
-        // we would expect the below to take ~ 1000ms * 3 * 3 = 9000ms sequentially
         double start = System.currentTimeMillis();
         int numberOfThreads = Runtime.getRuntime().availableProcessors();
-        comprehend(delayForMilliseconds(1000)).firstParameter(1.,2.,3.).secondParameter(1.,2.,3.)
+        comprehend(delayForMilliseconds(1000)).firstParameter(1., 2., 3.).secondParameter(1., 2., 3.)
                 .parallel().count();
 
         double duration = System.currentTimeMillis() - start;
 
-        // but because we ran in parallel...
         double roughExpectedDuration = 9000. / numberOfThreads;
 
         double tolerance = 1000.;

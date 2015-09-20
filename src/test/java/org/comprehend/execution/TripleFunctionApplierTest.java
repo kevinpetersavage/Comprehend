@@ -1,7 +1,7 @@
 package org.comprehend.execution;
 
 import com.google.common.collect.Lists;
-import org.comprehend.TripleFunction;
+import org.comprehend.functions.TripleFunction;
 import org.junit.Test;
 
 import static org.fest.assertions.Assertions.assertThat;

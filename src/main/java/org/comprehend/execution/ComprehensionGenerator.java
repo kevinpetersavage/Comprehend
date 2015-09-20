@@ -1,7 +1,6 @@
 package org.comprehend.execution;
 
 import com.google.common.collect.Lists;
-import org.comprehend.capture.NextAction;
 
 import java.math.BigInteger;
 import java.util.List;

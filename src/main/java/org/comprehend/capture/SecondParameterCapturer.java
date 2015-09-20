@@ -1,5 +1,5 @@
 package org.comprehend.capture;
 
-public interface SecondParameterCapturer<P, R> extends ParameterCapturer<P, R>{
+public interface SecondParameterCapturer<P, R>{
     R secondParameter(P... param);
 }

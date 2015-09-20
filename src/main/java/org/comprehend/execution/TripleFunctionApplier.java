@@ -1,6 +1,6 @@
 package org.comprehend.execution;
 
-import org.comprehend.TripleFunction;
+import org.comprehend.functions.TripleFunction;
 
 import java.util.List;
 

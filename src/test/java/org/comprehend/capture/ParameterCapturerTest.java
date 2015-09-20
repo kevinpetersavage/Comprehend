@@ -1,6 +1,7 @@
 package org.comprehend.capture;
 
 import com.google.common.collect.Lists;
+import org.comprehend.execution.NextAction;
 import org.junit.Test;
 
 import java.util.List;
