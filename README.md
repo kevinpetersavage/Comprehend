@@ -3,7 +3,8 @@ Comprehend
 
 Attempt at a syntax for list comprehensions in java. Allows you to write things like:
 
-	comprehend((Double x, Double y) -> x * x + y * y).firstParameter(1., 2., 3.).secondParameter(1., 2., 3.)
+	comprehend((Double x, Double y) -> x * x + y * y)
+		.firstParameter(1., 2., 3.).secondParameter(1., 2., 3.)
 
 See org.comprehend.ExampleTests for (a few) more examples.
 
