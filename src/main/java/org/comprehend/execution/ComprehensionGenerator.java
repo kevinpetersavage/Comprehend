@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-public class ComprehensionGenerator<S> implements NextAction<Stream<S>> {
+public class ComprehensionGenerator<S> implements Action<Stream<S>> {
     private FunctionApplier<S> functionApplier;
 
     public ComprehensionGenerator(FunctionApplier<S> functionApplier) {

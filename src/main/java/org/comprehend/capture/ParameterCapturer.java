@@ -1,15 +1,15 @@
 package org.comprehend.capture;
 
 import com.google.common.collect.Lists;
-import org.comprehend.execution.NextAction;
+import org.comprehend.execution.Action;
 
 import java.util.List;
 
 public class ParameterCapturer<P, R> implements FirstParameterCapturer<P, R>, SecondParameterCapturer<P,R>, ThirdParameterCapturer<P,R>, FourthParameterCapture<P,R>{
-    private final NextAction<R> nextAction;
+    private final Action<R> nextAction;
     private final List<List> paramsSoFar;
 
-    public ParameterCapturer(NextAction<R> nextAction, List<List> paramsSoFar) {
+    public ParameterCapturer(Action<R> nextAction, List<List> paramsSoFar) {
         this.nextAction = nextAction;
         this.paramsSoFar = paramsSoFar;
     }

@@ -1,7 +1,7 @@
 package org.comprehend.capture;
 
 import com.google.common.collect.Lists;
-import org.comprehend.execution.NextAction;
+import org.comprehend.execution.Action;
 import org.junit.Test;
 
 import java.util.List;
@@ -14,8 +14,9 @@ import static org.mockito.Mockito.verify;
 public class ParameterCapturerTest {
     @Test
     public void shouldCaptureFunctionAndTwoParameters() {
-        NextAction<Stream<String>> action = mock(NextAction.class);
-        NextAction<SecondParameterCapturer<String, Stream<String>>> secondParam = (List<List> paramsSoFar) -> new ParameterCapturer<>(action, paramsSoFar);
+        Action<Stream<String>> action = mock(Action.class);
+        Action<SecondParameterCapturer<String, Stream<String>>> secondParam =
+                (paramsSoFar) -> new ParameterCapturer<>(action, paramsSoFar);
         new ParameterCapturer<>(secondParam, Lists.newArrayList()).firstParameter(5, 6).secondParameter("a", "b");
 
         verify(action).perform(newArrayList(newArrayList(5, 6), newArrayList("a", "b")));
@@ -23,10 +24,10 @@ public class ParameterCapturerTest {
 
     @Test
     public void shouldCaptureFunctionAndThreeParameters() {
-        NextAction<Stream<String>> action = mock(NextAction.class);
-        NextAction<ThirdParameterCapturer<Double, Stream<String>>> thirdParam =
+        Action<Stream<String>> action = mock(Action.class);
+        Action<ThirdParameterCapturer<Double, Stream<String>>> thirdParam =
                 (paramsSoFar) -> new ParameterCapturer<>(action, paramsSoFar);
-        NextAction<SecondParameterCapturer<String, ThirdParameterCapturer<Double, Stream<String>>>> secondParam =
+        Action<SecondParameterCapturer<String, ThirdParameterCapturer<Double, Stream<String>>>> secondParam =
                 (paramsSoFar) -> new ParameterCapturer<>(thirdParam, paramsSoFar);
         new ParameterCapturer<>(secondParam, Lists.newArrayList())
                 .firstParameter(5, 6).secondParameter("a", "b").thirdParameter(5., 6.);
